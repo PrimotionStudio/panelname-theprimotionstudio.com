@@ -17,7 +17,7 @@
  */
 
 import St from 'gi://St';
-import {Extension} from 'resource:///org/gnome/shell/extensions/extension.js';
+import {Extension, gettext as _, ngettext, pgettext} from 'resource:///org/gnome/shell/extensions/extension.js';
 import * as Main from 'resource:///org/gnome/shell/ui/main.js';
 import * as PanelMenu from 'resource:///org/gnome/shell/ui/panelMenu.js';
 import GLib from 'gi://GLib';
@@ -35,6 +35,18 @@ export default class PlainExampleExtension extends Extension {
         this._indicator.add_child(btn);
         // Main.panel.__leftBox.insert_child_at_index(this._indicator,);  // old way
         Main.panel.addToStatusArea(this.uuid, this._indicator);
+
+        this._indicator.menu.addAction(pgettext('menu item', 'Notify'), () => {
+            this._count += 1;
+            const title = _('Notification');
+            const body = ngettext(
+                                  'You have been notified %d time',
+                                  'You have been notified %d times',
+                                  this._count
+                                ).format(this._count)
+            Main.notify(title, body);
+        });
+        this._count = 0;
 
     }
 

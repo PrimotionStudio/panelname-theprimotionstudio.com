@@ -4,5 +4,6 @@
   "uuid": "panelname@theprimotionstudio.com",
   "shell-version": [
     "46"
-  ]
+  ],
+  "gettext-domain": "panelname@theprimotionstudio.com"
 }
