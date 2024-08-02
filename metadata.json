@@ -1,0 +1,8 @@
+{
+  "name": "Panel Name",
+  "description": "Display the name of the current logged-in user on the panel as a button",
+  "uuid": "panelname@theprimotionstudio.com",
+  "shell-version": [
+    "46"
+  ]
+}
